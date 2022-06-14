@@ -1,7 +1,6 @@
 local sm2 = {}
 sm2.internal = {}
 sm2.internal.subscriptions = {}
-sm2.internal.id = 6e9
 
 sm2.subscribeMessage = function(eventName:string, funcToCall:any)
   if not eventName then error("no provided event to subscribe!", 2) end
@@ -22,17 +21,8 @@ sm2.sendMessage = function(antenna:Antenna, id:number, contents:any)
   return true
 end
 
-sm2.setIDToListenOn = function(id:number)
-  if not id then error("no provided id to listen on!", 2) end
-  if (not typeof(id) == "number") or (id < 0) or (id > 9999) or (math.round(id) ~= id) then error("invalid listening id specified. the id must be a whole number from 0-9999", 2) end
-  
-  sm2.internal.id = id
-  
-  return true
+sm2.listen = function(portID:number,antennaID:number?)
+  coroutine.resume(coroutine.create(function()
+        -- listener code here
+  end))
 end
-
-sm2.internal.listener = function()
-  -- listener code here
-end
-
-coroutine.resume(coroutine.create(sm2.internal.listener))
