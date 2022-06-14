@@ -22,7 +22,7 @@ sm2.sendMessage = function(antenna:Antenna, id:number, contents:any)
   return true
 end
 
-sm2.setIDtoListenOn = function(id:number)
+sm2.setIDToListenOn = function(id:number)
   if not id then error("no provided id to listen on!", 2) end
   if (not typeof(id) == "number") or (id < 0) or (id > 9999) or (math.round(id) ~= id) then error("invalid listening id specified. the id must be a whole number from 0-9999", 2) end
   
